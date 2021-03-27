@@ -1,15 +1,32 @@
 // import logo from "./logo.svg";
 // import "./App.css";
-import Todo from "./components/Todo";
+// import Todo from "./components/Todo";
+import { Route, Switch } from "react-router-dom";
+import AllMeetupsPage from "./pages/AllMeetups";
+import NewMeetupPage from "./pages/NewMeetup";
+import FavoritesPage from "./pages/Favorites";
+import TodosPage from "./pages/TodosPage";
+// import MainNavigation from "./components/layout/MainNavigation";
+import Layout from "./components/layout/Layout";
 
 function App() {
+  // localhost:3000/todos
+  // my-page.com/todos
   return (
-    <div>
-      <h1>My Todos</h1>
-      <Todo text='Learn React' />
-      <Todo text='Master React' />
-      <Todo text='Explore the full React course' />
-    </div>
+    <Layout>
+      <Switch>
+        <Route path='/' exact={true}>
+          <AllMeetupsPage />
+        </Route>
+        <Route path='/new-meetup'>
+          <NewMeetupPage />
+        </Route>
+        <Route path='/favorites'>
+          <FavoritesPage />
+        </Route>
+        <Route path='/todos' component={TodosPage}></Route>
+      </Switch>
+    </Layout>
   );
 }
 
